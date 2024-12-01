@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Countdown</title>
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #1e3c72, #2a5298); /* Elegant blue gradient */
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        a {
+            text-decoration: none;  /* Remove underline */
+            color: inherit;         /* Inherit color from parent (in this case, the button color) */
+        }
+
+        /* Snowfall effect */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            z-index: 9999;
+            color: white;
+            font-size: 24px;
+            user-select: none;
+            pointer-events: none;
+            animation: snow 10s linear infinite;
+        }
+
+        @keyframes snow {
+            0% {
+                transform: translateX(0) translateY(0);
+            }
+            100% {
+                transform: translateX(100px) translateY(100vh);
+            }
+        }
+
+        /* Header Styling */
+        header {
+            background: linear-gradient(to right, #6a11cb, #2575fc); /* Cool purple to blue gradient */
+            color: white;
+            padding: 40px 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+        }
+
+        /* Event Container Styling */
+        .event-container {
+            margin: 30px auto;
+            padding: 40px;
+            background: linear-gradient(145deg, #ffffff, #f7f9fc); /* White to light gray gradient */
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            position: relative;
+            overflow: hidden;
+            height: auto;
+            background-image: url('https://example.com/christmas-image.jpg'); /* Replace with your Christmas image URL */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .event-title {
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 2px;
+        }
+
+        .event-description {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: #fff;
+            line-height: 1.6;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .countdown {
+            font-size: 32px;
+            font-weight: bold;
+            color: #ff6f61;
+            margin-bottom: 25px;
+        }
+
+        .timer {
+            font-size: 60px;
+            font-weight: 700;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-now-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            font-size: 20px;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(145deg, #6a11cb, #2575fc); /* Blue gradient */
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .book-now-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(145deg, #2575fc, #6a11cb); /* Reverse gradient on hover */
+        }
+
+        footer {
+            background: linear-gradient(to right, #6a11cb, #2575fc); /* Consistent cool gradient */
+            color: white;
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* Santa Image Styling */
+        .santa-image {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: auto;
+            height: 780px;
+            z-index: 0;
+            animation: bounce 1s infinite alternate;
+        }
+
+        .tree-image {
+            position: fixed;
+            left: 20px;
+            bottom: -11px;
+            width: auto;
+            height: 780px;
+            z-index: 0;
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-10px);
+            }
+        }
+
+      /* Mobile Responsiveness */
+@media (max-width: 768px) {
+    /* Adjusting header and event-container for smaller screens */
+    header {
+        padding: 30px 10px;
+    }
+
+    .event-container {
+        padding: 20px;
+        max-width: 90%;
+        margin-top: 10vh;
+        height: auto;
+    }
+
+    .event-title {
+        font-size: 30px;
+    }
+
+    .event-description {
+        font-size: 18px;
+        max-width: 95%;
+    }
+
+    .countdown {
+        font-size: 26px;
+    }
+
+    .timer {
+        font-size: 50px;
+    }
+
+    .book-now-btn {
+        padding: 12px 30px;
+        font-size: 18px;
+    }
+
+    /* Move images below the button on smaller screens */
+    .tree-image, .santa-image {
+        position: sticky;
+        bottom: 20px; /* Push it to the bottom of the screen */
+        
+        transform: translateX(-50%);
+        height: 10px;
+        width: 10px; /* Adjust the width to a smaller size */
+        z-index: 0;
+    }
+
+    .santa-image {
+       
+        height: 100px;
+        width: 90px;
+        
+        
+    }
+    .tree-image{
+        height: 100px;
+        width: 90px;
+        
+    }
+}
+
+@media (max-width: 400px) {
+    .event-title {
+        font-size: 24px;
+    }
+
+    .event-description {
+        font-size: 16px;
+        max-width: 100%;
+    }
+
+    .countdown {
+        font-size: 22px;
+    }
+
+    .timer {
+        font-size: 40px;
+    }
+
+    .book-now-btn {
+        padding: 10px 25px;
+        font-size: 16px;
+    }
+
+    /* Additional adjustments for very small screens */
+    .tree-image, .santa-image {
+        width: 150px; /* Smaller width on very small screens */
+        height: 150px;
+    }
+}
+
+
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Upcoming Event</h1>
+</header>
+
+<!-- Snowflakes -->
+<div id="snowflakes"></div>
+
+<div class="event-container">
+    <h2 class="event-title">Christmas Celebration 2024</h2>
+    <p class="event-description">
+        Get ready to celebrate Christmas like never before! Join us on December 25th, 2024 for an unforgettable evening filled with festive cheer, music, and joy. Bring your friends and family for a magical celebration! <br><br> <strong>Price: ₹200/-</strong>
+    </p>
+    
+    <div class="countdown">
+        <p>Time left until the event:</p>
+        <p id="timer" class="timer"></p>
+    </div>
+
+    <!-- Book Now Button -->
+    <button class="book-now-btn"><a href="form.html">Book Now</a></button>
+</div>
+<!-- TREE Image -->
+<img src="left.png" alt="Santa Claus" class="tree-image">
+<!-- Santa Image -->
+<img src="senta.webp" alt="Santa Claus" class="santa-image">
+
+<script>
+    // Snowfall JavaScript
+        function createSnowflake() {
+            let snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.textContent = '❄';  // Snowflake character
+
+            // Randomize the position and animation duration
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 3 + 5 + 's';
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+
+            // Add snowflake to body
+            document.body.appendChild(snowflake);
+
+            // Remove snowflake after animation ends
+            snowflake.addEventListener('animationend', function() {
+                snowflake.remove();
+            });
+        }
+
+        // Create snowflakes every 100 milliseconds
+        setInterval(createSnowflake, 100);
+
+    // Set the date for the event (December 25th, 2024 at 00:00:00)
+    var eventDate = new Date("Dec 25, 2024 00:00:00").getTime();
+
+    // Update the countdown every second
+    var countdownFunction = setInterval(function() {
+
+        // Get the current date and time
+        var now = new Date().getTime();
+        
+        // Find the time remaining
+        var distance = eventDate - now;
+        
+        // Time calculations for days, hours, minutes, and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        // Display the result in the timer element
+        document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+        
+        // If the countdown ends, display a message
+        if (distance < 0) {
+            clearInterval(countdownFunction);
+            document.getElementById("timer").innerHTML = "The event has started!";
+        }
+    }, 1000);
+</script>
+
+</body>
+</html>
