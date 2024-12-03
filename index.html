@@ -6,320 +6,318 @@
     <title>JINGLE's Picnic</title>
     
     <style>
- /* Basic Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-a {
-    text-decoration: none;  /* Remove underline */
-    color: inherit;         /* Inherit color from parent (in this case, the button color) */
-}
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        a {
+            text-decoration: none;  /* Remove underline */
+            color: inherit;         /* Inherit color from parent (in this case, the button color) */
+        }
 
-/* Body Styling */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    line-height: 1.6;
-    position: relative;
-}
+        /* Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            line-height: 1.6;
+            position: relative;
+        }
 
-/* Navbar Styling */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1em;
-    background: linear-gradient(to right, black, orange);
-    color: white;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    animation: fadeInNav 1.5s ease-out;
-    overflow: hidden;
-}
+        /* Hero Section */
+        .hero {
+            background-image: url('1.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            animation: fadeInHero 2s ease-in-out;
+            padding: 0 2em; /* Padding for smaller screens */
+            box-sizing: border-box;
+        }
 
-nav .logo h1 {
-    font-size: 2rem; /* Responsive font size */
-}
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1em;
+            display: inline-block; /* Ensure it behaves like a single element */
+            white-space: nowrap; /* Prevent wrapping */
+            overflow: hidden; /* Hide text that hasn't been typed yet */
+            border-right: 3px solid white; /* Create the cursor effect */
+            animation: typing 2s steps(30) 1s forwards, blink 0.75s step-end infinite; /* typing effect and blinking cursor */
+        }
 
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 2em;
-}
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 1em;
+        }
 
-.nav-links li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
-}
+        .cta-button {
+            padding: 1em 2em;
+            font-size: 1.2rem;
+            font-weight: bold;
+            background-color: orange;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
 
-.nav-links li a:hover {
-    color: #ffd54f;
-}
+        .cta-button:hover {
+            background-color: transparent;
+        }
 
-/* Authentication Buttons */
-.auth-buttons button {
-    background-color: #ffd54f;
-    border: none;
-    padding: 0.5em 1em;
-    margin-left: 1em;
-    cursor: pointer;
-    font-size: 1rem;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
+        /* Add "JINGLE's" to top left corner */
+        .jingles-logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: orange;  /* Default color */
+            z-index: 100;
+            animation: colorChange 5s linear infinite; /* Animate colors */
+        }
 
-.auth-buttons button:hover {
-    background-color: #fbc02d;
-}
+        /* About Us Section */
+        .about-us {
+            padding: 3em 2em;
+            text-align: center;
+            background-color: #ffffff;
+            color: #00796b;
+            margin-top: 3em;
+            animation: fadeIn 2s ease-in-out;
+        }
 
-/* Hero Section */
-.hero {
-    background-image: url('1.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-align: center;
-    animation: fadeInHero 2s ease-in-out;
-    padding: 0 2em; /* Padding for smaller screens */
-    box-sizing: border-box;
-}
+        .about-us h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1em;
+            animation: fadeInText 1.5s ease-in-out;
+        }
 
-.hero h1 {
-    font-size: 4rem;
-    margin-bottom: 1em;
-    animation: slideIn 1.5s ease-out;
-}
+        /* Event Section */
+        .event {
+            padding: 3em 2em;
+            text-align: center;
+            background-color: #00796b;
+            color: white;
+            margin-top: 3em;
+        }
 
-.hero p {
-    font-size: 1.5rem;
-    margin-bottom: 1em;
-}
+        /* Snowfall Styles */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            pointer-events: none;
+            z-index: 9999;
+            color: #fff;
+            font-size: 2rem;
+            animation: fall 10s linear infinite;
+        }
+        /* Event Button */
+        .event-button {
+            position: absolute;
+            top: 20px; /* Adjust this value to control the distance from the top */
+            right: 20px; /* Adjust this value to control the distance from the right */
+            background-color: orange;
+            color: white;
+            padding: 1em 2em;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            z-index: 101; /* Ensure it's above other content */
+        }
 
-.cta-button {
-    padding: 1em 2em;
-    font-size: 1.2rem;
-    font-weight: bold;
-    background-color: orange;
-    border: none;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
+        .event-button:hover {
+            background-color: transparent; /* Darker shade on hover */
+        }
 
-.cta-button:hover {
-    background-color: #004d40;
-}
+        /* Help Button */
+        .help-button {
+            position: fixed;
+            bottom: 20px; /* Position from the bottom */
+            right: 20px; /* Position from the right */
+            width: 50px; /* Width of the circle */
+            height: 50px; /* Height of the circle */
+            border-radius: 50%; /* Makes it a circle */
+            background-color: orange; /* Circle color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white; /* Text color */
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 100; /* Ensure it's above other content */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for better visibility */
+        }
 
-/* About Us Section */
-.about-us {
-    padding: 3em 2em;
-    text-align: center;
-    background-color: #ffffff;
-    color: #00796b;
-    margin-top: 3em;
-    animation: fadeIn 2s ease-in-out;
-}
+        .help-button:hover {
+            background-color: #ff6600; /* Darker orange on hover */
+        }
 
-.about-us h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1em;
-    animation: fadeInText 1.5s ease-in-out;
-}
+        /* Keyframe animation for typing effect */
+        @keyframes typing {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
 
-/* Event Section */
-.event {
-    padding: 3em 2em;
-    text-align: center;
-    background-color: #00796b;
-    color: white;
-    margin-top: 3em;
-}
+        /* Keyframe animation for blinking cursor */
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+            100% {
+                border-color: white;
+            }
+        }
 
-/* Snowfall Styles */
-.snowflake {
-    position: fixed;
-    top: -10px;
-    pointer-events: none;
-    z-index: 9999;
-    color: #fff;
-    font-size: 2rem;
-    animation: fall 10s linear infinite;
-}
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
 
-@keyframes fall {
-    0% {
-        transform: translateY(-100px) rotate(0deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-    }
-}
+        /* Keyframe animation for color change */
+        @keyframes colorChange {
+            0% {
+                color: orange;
+            }
+            25% {
+                color: #FF4500; /* Orange Red */
+            }
+            50% {
+                color: #FF6347; /* Tomato */
+            }
+            75% {
+                color: #FFD700; /* Gold */
+            }
+            100% {
+                color: orange;
+            }
+        }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-    .nav-links {
-        gap: 1.5em;
-    }
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
 
-    .hero h1 {
-        font-size: 3.5rem;
-    }
+            .hero p {
+                font-size: 1.3rem;
+            }
 
-    .hero p {
-        font-size: 1.3rem;
-    }
+            .cta-button {
+                font-size: 1.1rem;
+                padding: 0.8em 1.8em;
+            }
 
-    .cta-button {
-        font-size: 1.1rem;
-        padding: 0.8em 1.8em;
-    }
+            .about-us h2 {
+                font-size: 2rem;
+            }
+        }
 
-    .about-us h2 {
-        font-size: 2rem;
-    }
-}
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+                white-space: normal; /* Allow text to wrap on mobile */
+                word-break: break-word; /* Force wrapping */
+                animation: none; /* Disable typing and blinking cursor animation on mobile */
+            }
 
-@media (max-width: 768px) {
-    .nav-links {
-        flex-direction: column;
-        gap: 1em;
-        text-align: center;
-    }
+            .hero p {
+                font-size: 1.2rem;
+            }
 
-    .hero h1 {
-        font-size: 3rem;
-    }
+            .cta-button {
+                font-size: 1rem;
+                padding: 0.7em 1.5em;
+            }
+        }
 
-    .hero p {
-        font-size: 1.2rem;
-    }
+        @media screen and (max-width: 600px) {
+            .hero h1 {
+                font-size: 2.5rem;
+                white-space: normal; /* Allow text to wrap on smaller mobile screens */
+                word-break: break-word; /* Force wrapping */
+                animation: none; /* Disable typing and blinking cursor animation on mobile */
+            }
 
-    .cta-button {
-        font-size: 1rem;
-        padding: 0.7em 1.5em;
-    }
-}
+            .hero p {
+                font-size: 1rem;
+            }
 
-@media (max-width: 400px) {
-    nav {
-        padding: 1em;
-    }
+            .cta-button {
+                font-size: 1rem;
+                padding: 0.6em 1.4em;
+            }
+        }
 
-    .nav-links {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
+        /* Animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
 
-    .nav-links li {
-        margin-bottom: 0.5em;
-    }
+        @keyframes fadeInHero {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
 
-    .hero h1 {
-        font-size: 2.5rem;
-    }
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
 
-    .hero p {
-        font-size: 1rem;
-    }
-
-    .cta-button {
-        font-size: 1rem;
-        padding: 0.6em 1.4em;
-    }
-
-    .auth-buttons button {
-        font-size: 0.9rem;
-        padding: 0.7em 1.2em;
-    }
-}
-
-/* Animations */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeInNav {
-    0% {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInHero {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes slideIn {
-    0% {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes fadeInText {
-    0% {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
     </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav>
-        <div class="logo">
-            <h1>JINGLE's</h1>
-        </div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#about-us">About Us</a></li>
-            <li><a href="Event.html">Event</a></li>
-        </ul>
-        <div class="auth-buttons">
-            <button id="signin">Sign In</button>
-            <button id="signup">Sign Up</button>
-        </div>
-    </nav>
-
+    <!-- "JINGLE's" Logo at top left -->
+    <div class="jingles-logo">JINGLE's</div>
+    <!-- Event Button -->
+    <button class="event-button"><a href="Event.html">Event</a></button>
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
@@ -329,31 +327,22 @@ nav .logo h1 {
         </div>
     </section>
 
-    
+    <!-- Help Button -->
+    <div class="help-button">Help</div>
 
     <script>
-
-    
         // Smooth Scroll for Navigation
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
         });
-    });
-});
 
-// SignIn and SignUp Button Interactions
-document.getElementById('signin').addEventListener('click', function() {
-    alert('Sign In functionality coming soon!');
-});
-
-document.getElementById('signup').addEventListener('click', function() {
-    alert('Sign Up functionality coming soon!');
-});
     </script>
 </body>
 </html>
