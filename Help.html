@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Full screen background animation */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff00ff, #00b3b3, #ff6666, #00cc66);
+            background-size: 600% 600%;
+            animation: gradientBackground 10s ease infinite;
+        }
+
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px 30px;
+            background-color: rgba(0, 0, 0, 0.0); /* semi-transparent background */
+            border-radius: 15px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        p {
+            margin-bottom: 30px;
+            color: orange;
+            font-weight: 500;
+            font-size:larger;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: black;
+            font-weight: 500;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid white;
+            border-radius: 8px;
+            border-top: whitesmoke;
+            background-color: transparent;
+            color: white;
+            font-size: 1.1em;
+            transition: border-color 0.3s ease;
+            
+        }
+
+        input:focus, textarea:focus {
+            border-color: whitesmoke;
+            outline: none;
+        }
+
+        button {
+            padding: 12px 24px;
+            background-color: #ff7f50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #ff6347;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            background-color: #ff4500;
+            transform: scale(0.98);
+        }
+
+        #responseMessage {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Help Portal</h1>
+        <p>Need assistance? Please fill out the form below, and we'll get back to you.</p>
+        <form id="helpForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="responseMessage"></div>
+    </div>
+
+    <script>
+        // Function to handle form submission
+        document.getElementById('helpForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent the form from reloading the page
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            let isValid = true;
+            let errorMessage = '';
+
+            // Reset response message color
+            document.getElementById('responseMessage').style.color = 'white';
+
+            // Validate Name
+            if (name === '') {
+                isValid = false;
+                errorMessage += 'Name is required.\n';
+            }
+
+            // Validate Email
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (email === '' || !emailPattern.test(email)) {
+                isValid = false;
+                errorMessage += 'Please enter a valid email.\n';
+            }
+
+            // Validate Message
+            if (message === '') {
+                isValid = false;
+                errorMessage += 'Message cannot be empty.\n';
+            }
+
+            if (isValid) {
+                // Display success message
+                document.getElementById('responseMessage').textContent = 'Thank you, ' + name + '! Your message has been sent successfully.';
+                document.getElementById('responseMessage').className = 'success';
+            } else {
+                // Display error message
+                document.getElementById('responseMessage').textContent = errorMessage.trim();
+                document.getElementById('responseMessage').className = 'error';
+            }
+        });
+    </script>
+</body>
+</html>
