@@ -42,25 +42,27 @@
         }
 
         .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1em;
+            font-size: 3rem;
+            margin-bottom: 0.2em;
             display: inline-block; /* Ensure it behaves like a single element */
             white-space: nowrap; /* Prevent wrapping */
             overflow: hidden; /* Hide text that hasn't been typed yet */
-            border-right: 3px solid white; /* Create the cursor effect */
-            animation: typing 2s steps(30) 1s forwards, blink 0.75s step-end infinite; /* typing effect and blinking cursor */
+            border-right: 0px solid black; /* Create the cursor effect */
+            animation: typing 3s steps(30) 1.75s forwards, blink 0.0s; /* typing effect and blinking cursor */
         }
 
         .hero p {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 1em;
         }
 
         .cta-button {
-            padding: 1em 2em;
+            padding: 1em 1em;
             font-size: 1.2rem;
             font-weight: bold;
             background-color: orange;
+            background: linear-gradient(to left, #FF4500, #FF6347, #FFD700);
+            color: white;
             border: none;
             color: white;
             cursor: pointer;
@@ -72,6 +74,21 @@
             background-color: transparent;
         }
 
+        .events-button{
+            padding: 1em 1em;
+            font-size: 1.2rem;
+            font-weight: bold;
+            background: linear-gradient(to right, #FF4500, #FF6347, #FFD700);
+            color: white;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .events-button:hover {
+            background-color: transparent;
+        }
         /* Add "JINGLE's" to top left corner */
         .jingles-logo {
             position: absolute;
@@ -119,14 +136,29 @@
             font-size: 2rem;
             animation: fall 10s linear infinite;
         }
-        /* Event Button */
-        .event-button {
+        .signUp-button{
+            position: absolute;
+            top: 20px; /* Adjust this value to control the distance from the top */
+            right: 130px; /* Adjust this value to control the distance from the right */
+            background: linear-gradient(to left, #FF4500, #FF6347, #FFD700);
+            color: white;
+            padding: 0.7em 1em;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            z-index: 101; /* Ensure it's above other content */
+        }
+        /* Sign-In Button */
+        .signIn-button {
             position: absolute;
             top: 20px; /* Adjust this value to control the distance from the top */
             right: 20px; /* Adjust this value to control the distance from the right */
-            background-color: orange;
+            background: linear-gradient(to right, #FF4500, #FF6347, #FFD700);
             color: white;
-            padding: 1em 2em;
+            padding: 0.7em 1em;
             font-size: 1.2rem;
             font-weight: bold;
             border: none;
@@ -145,10 +177,10 @@
             position: fixed;
             bottom: 20px; /* Position from the bottom */
             right: 20px; /* Position from the right */
-            width: 50px; /* Width of the circle */
+            width: 120px; /* Width of the circle */
             height: 50px; /* Height of the circle */
-            border-radius: 50%; /* Makes it a circle */
-            background-color: orange; /* Circle color */
+            border-radius: 90%; /* Makes it a circle */
+            background: linear-gradient(to right, #FF4500, #FF6347, #FFD700); /* Circle color */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -212,6 +244,24 @@
             100% {
                 color: orange;
             }
+        }
+
+        /* Footer Section */
+        .footer {
+            background-color: black; /* Dark background for the footer */
+            color: white; /* White text */
+            text-align: center;
+            padding: 1.5em 0;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer p {
+            font-size: 1rem;
+            margin: 0;
+            background-color: black;
         }
 
         /* Responsive Design */
@@ -316,21 +366,34 @@
 <body>
     <!-- "JINGLE's" Logo at top left -->
     <div class="jingles-logo">JINGLE's</div>
-    <!-- Event Button -->
-    <button class="event-button"><a href="Event.html">Event</a></button>
+     <!-- signup-button -->
+    <button class="signUp-button" onclick="showAlert('SignUp')">SignUp</button>
+    <!-- signin-button -->
+    <button class="signIn-button" onclick="showAlert('SignIn')">SignIn</button>
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Welcome to JINGLE's Picnic!</h1>
-            <p>Join us for a fun-filled outdoor experience!</p>
+            <p>Join us for an exciting adventure! Enjoy nature, games, good food, and great company. Make unforgettable memories in a vibrant, fun-filled outdoor setting!</p>
             <button class="cta-button"><a href="form.html">Book Now</a></button>
+            <button class="events-button"><a href="Event.html">Upcoming Events</a></button>
         </div>
     </section>
 
     <!-- Help Button -->
-    <div class="help-button"><a href="Help.html">Help</a></div>
+    <div class="help-button" onclick="showAlert('Contact Us')">Contact Us</div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>&copy; 2024 JINGLE's Picnic. All rights reserved.</p>
+    </footer>
 
     <script>
+        // Alert Function
+        function showAlert(buttonName) {
+            alert(buttonName + " feature is coming soon!");
+        }
+
         // Smooth Scroll for Navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -342,7 +405,6 @@
                 });
             });
         });
-
     </script>
 </body>
 </html>
