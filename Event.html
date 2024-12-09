@@ -161,105 +161,85 @@
             }
         }
 
-      /* Mobile Responsiveness */
-@media (max-width: 768px) {
-    /* Adjusting header and event-container for smaller screens */
-    header {
-        padding: 30px 10px;
-    }
+        /* Mobile Responsiveness for Android devices */
+        @media (max-width: 768px) {
+            /* Remove images in mobile view (Android specific) */
+            .tree-image, .santa-image {
+                display: none;
+            }
 
-    .event-container {
-        padding: 20px;
-        max-width: 90%;
-        margin-top: 10vh;
-        height: auto;
-    }
+            /* Adjusting header and event-container for smaller screens */
+            header {
+                padding: 30px 10px;
+            }
 
-    .event-title {
-        font-size: 30px;
-    }
+            .event-container {
+                padding: 20px;
+                max-width: 90%;
+                margin-top: 10vh;
+                height: auto;
+            }
 
-    .event-description {
-        font-size: 18px;
-        max-width: 95%;
-    }
+            .event-title {
+                font-size: 30px;
+            }
 
-    .countdown {
-        font-size: 26px;
-    }
+            .event-description {
+                font-size: 18px;
+                max-width: 95%;
+            }
 
-    .timer {
-        font-size: 50px;
-    }
+            .countdown {
+                font-size: 26px;
+            }
 
-    .book-now-btn {
-        padding: 12px 30px;
-        font-size: 18px;
-    }
+            .timer {
+                font-size: 50px;
+            }
 
-    /* Move images below the button on smaller screens */
-    .tree-image, .santa-image {
-        position: sticky;
-        bottom: 20px; /* Push it to the bottom of the screen */
-        
-        transform: translateX(-50%);
-        height: 10px;
-        width: 10px; /* Adjust the width to a smaller size */
-        z-index: 0;
-    }
+            .book-now-btn {
+                padding: 12px 30px;
+                font-size: 18px;
+            }
+        }
 
-    .santa-image {
-       
-        height: 100px;
-        width: 90px;
-        
-        
-    }
-    .tree-image{
-        height: 100px;
-        width: 90px;
-        
-    }
-}
+        /* Additional styling for very small screens */
+        @media (max-width: 400px) {
+            .event-title {
+                font-size: 24px;
+            }
 
-@media (max-width: 400px) {
-    .event-title {
-        font-size: 24px;
-    }
+            .event-description {
+                font-size: 16px;
+                max-width: 100%;
+            }
 
-    .event-description {
-        font-size: 16px;
-        max-width: 100%;
-    }
+            .countdown {
+                font-size: 22px;
+            }
 
-    .countdown {
-        font-size: 22px;
-    }
+            .timer {
+                font-size: 40px;
+            }
 
-    .timer {
-        font-size: 40px;
-    }
+            .book-now-btn {
+                padding: 10px 25px;
+                font-size: 16px;
+            }
 
-    .book-now-btn {
-        padding: 10px 25px;
-        font-size: 16px;
-    }
-
-    /* Additional adjustments for very small screens */
-    .tree-image, .santa-image {
-        width: 150px; /* Smaller width on very small screens */
-        height: 150px;
-    }
-}
-
-
+            /* Additional adjustments for very small screens */
+            .tree-image, .santa-image {
+                width: 150px; /* Smaller width on very small screens */
+                height: 150px;
+            }
+        }
 
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Upcoming Event</h1>
+    <h1>JINGLE's Event</h1>
 </header>
 
 <!-- Snowflakes -->
@@ -279,34 +259,36 @@
     <!-- Book Now Button -->
     <button class="book-now-btn"><a href="form.html">Book Now</a></button>
 </div>
+
 <!-- TREE Image -->
-<img src="left.png" alt="Santa Claus" class="tree-image">
+<img src="left.png" alt="Christmas Tree" class="tree-image">
+
 <!-- Santa Image -->
 <img src="senta.webp" alt="Santa Claus" class="santa-image">
 
 <script>
     // Snowfall JavaScript
-        function createSnowflake() {
-            let snowflake = document.createElement('div');
-            snowflake.classList.add('snowflake');
-            snowflake.textContent = '❄';  // Snowflake character
+    function createSnowflake() {
+        let snowflake = document.createElement('div');
+        snowflake.classList.add('snowflake');
+        snowflake.textContent = '❄';  // Snowflake character
 
-            // Randomize the position and animation duration
-            snowflake.style.left = Math.random() * 100 + 'vw';
-            snowflake.style.animationDuration = Math.random() * 3 + 5 + 's';
-            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+        // Randomize the position and animation duration
+        snowflake.style.left = Math.random() * 100 + 'vw';
+        snowflake.style.animationDuration = Math.random() * 3 + 5 + 's';
+        snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
 
-            // Add snowflake to body
-            document.body.appendChild(snowflake);
+        // Add snowflake to body
+        document.body.appendChild(snowflake);
 
-            // Remove snowflake after animation ends
-            snowflake.addEventListener('animationend', function() {
-                snowflake.remove();
-            });
-        }
+        // Remove snowflake after animation ends
+        snowflake.addEventListener('animationend', function() {
+            snowflake.remove();
+        });
+    }
 
-        // Create snowflakes every 100 milliseconds
-        setInterval(createSnowflake, 100);
+    // Create snowflakes every 100 milliseconds
+    setInterval(createSnowflake, 100);
 
     // Set the date for the event (December 25th, 2024 at 00:00:00)
     var eventDate = new Date("Dec 25, 2024 00:00:00").getTime();
