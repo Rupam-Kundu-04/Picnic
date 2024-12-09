@@ -361,6 +361,30 @@
             }
         }
 
+        /* Button container */
+        .button-container {
+            display: flex;
+            flex-direction: column; /* Stack buttons vertically by default */
+            gap: 1em; /* Space between the buttons */
+            align-items: center; /* Center the buttons horizontally */
+        }
+
+        /* For larger screens (default layout) */
+        @media (min-width: 768px) {
+            .button-container {
+                flex-direction: row; /* Stack buttons horizontally for larger screens */
+                justify-content: center; /* Center the buttons horizontally */
+            }
+        }
+
+        /* Adjust buttons specifically for smaller screens (mobile) */
+        @media (max-width: 768px) {
+            .cta-button, .events-button {
+                width: 100%; /* Make buttons full-width on mobile */
+                max-width: 300px; /* Optional: limit button width on small screens */
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -375,8 +399,12 @@
         <div class="hero-content">
             <h1>Welcome to JINGLE's Picnic!</h1>
             <p>Join us for an exciting adventure! Enjoy nature, games, good food, and great company. Make unforgettable memories in a vibrant, fun-filled outdoor setting!</p>
-            <button class="cta-button"><a href="form.html">Book Now</a></button>
-            <button class="events-button"><a href="Event.html">Upcoming Events</a></button>
+            
+            <!-- Button Container -->
+            <div class="button-container">
+                <button class="cta-button"><a href="form.html">Book Now</a></button>
+                <button class="events-button"><a href="Event.html">Upcoming Events</a></button>
+            </div>
         </div>
     </section>
 
